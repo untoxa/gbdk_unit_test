@@ -1,0 +1,9 @@
+/build
+/unused
+*.bak
+*.sym
+*.map
+*.gb
+*.sna
+*.bmp
+__pycache__

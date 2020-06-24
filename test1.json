@@ -1,0 +1,8 @@
+{
+  "description": "simple test",
+  "rules": [
+    "str(DATA('WRAM', ADDR('_result', 'WRAM'), 6), 'ascii') == 'PASSED'",
+    "DATA('WRAM', ADDR('_result', 'WRAM') + 6) == 0",
+    "CHECKSCREEN('test1.png')"
+  ]
+}

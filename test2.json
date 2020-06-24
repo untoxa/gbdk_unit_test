@@ -1,0 +1,6 @@
+{
+  "description": "fail test",
+  "rules": [
+    "1 == 2"
+  ]
+}
