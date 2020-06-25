@@ -43,5 +43,5 @@ void test(void)
 	line(0,143,159,143);
     }
 
-    delay(1000);
+    delay(100);
 }

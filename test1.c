@@ -7,5 +7,5 @@
 void test() {
     printf("hello, world!");
     strcpy(result, "PASSED"); 
-    delay(1000);
+    delay(100);
 }
