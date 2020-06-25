@@ -1,7 +1,10 @@
 {
   "description": "simple test",
+"unused":     "DATA('WRAM', ADDR('_result', 'WRAM'), 7) == [0x50, 0x41, 0x53, 0x53, 0x45, 0x44, 0x00]",
   "rules": [
-    "str(DATA('WRAM', ADDR('_result', 'WRAM'), 6), 'ascii') == 'PASSED'",
+    "ASCIIZ('WRAM', ADDR('_result', 'WRAM')) == 'PASSED'",
+    "DATA('WRAM', ADDR('_result', 'WRAM'), 7) == bytearray([0x50, 0x41, 0x53, 0x53, 0x45, 0x44, 0x00])",
+    "DATA('WRAM', ADDR('_result', 'WRAM'), 7) == bytearray(b'PASSED\\x00')",
     "DATA('WRAM', ADDR('_result', 'WRAM') + 6) == 0",
     "CHECKSCREEN('test1.png')"
   ]

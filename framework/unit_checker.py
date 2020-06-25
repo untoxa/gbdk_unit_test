@@ -45,6 +45,14 @@ def DATA(section, address, len = 0):
     else:
         return snapshot[section][address]
 
+def ASCIIZ(section, address):
+    ofs = address
+    data = snapshot[section]
+    fin = ofs
+    while data[fin] != 0: fin += 1
+    return str(data[ofs:fin], 'ascii') if fin - ofs > 0 else ''
+
+
 if len(sys.argv) == 1:
     sys.exit(('Unit test checker v0.1\n'
               '  USAGE: unit_checker.py <rules.json> <mapfile.map> <snapshot.sna> <screenshot.bmp>'))
