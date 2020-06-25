@@ -1,5 +1,5 @@
 {
-  "description": "simple test",
+  "description": "example test",
   "rules": [
     "ASCIIZ('WRAM', ADDR('_result', 'WRAM')) == 'PASSED'",
     "DATA('WRAM', ADDR('_result', 'WRAM'), 7) == bytearray([0x50, 0x41, 0x53, 0x53, 0x45, 0x44, 0x00])",

@@ -1,0 +1,6 @@
+{
+  "description": "fill test",
+  "rules": [
+    "CHECKSCREEN('test4.png')"
+  ]
+}

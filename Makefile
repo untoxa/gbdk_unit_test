@@ -23,4 +23,5 @@ compile: $(MYDIR)/*.c
 		$(CC) -o $${file}.gb $(BLDDIR)/main.o $${file}.c ; \
 		$(EMU) -set "DebugSrcBrk=1" -hf -stateonexit -screenonexit $(MYDIR)/$${file}.bmp -rom $${file}.gb ; \
 		$(CHK) $${file}.json $${file}.map $${file}.sna $${file}.bmp ; \
+#		[[ $$? != 0 ]] && exit -1; \
 	done
