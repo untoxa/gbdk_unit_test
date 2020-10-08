@@ -9,7 +9,7 @@ import sys
 import json
 from PIL import Image, ImageChops
 
-from BGB_toolkit import load_nogmb_map, read_bgb_snspshot
+from BGB_toolkit import load_noi, read_bgb_snspshot
 
 def get_rule_desc(config_file):
     desc = config.get('description', '')
@@ -55,14 +55,14 @@ def ASCIIZ(section, address):
 
 if len(sys.argv) == 1:
     sys.exit(('Unit test checker v0.1\n'
-              '  USAGE: unit_checker.py <rules.json> <mapfile.map> <snapshot.sna> <screenshot.bmp>'))
+              '  USAGE: unit_checker.py <rules.json> <symbols.noi> <snapshot.sna> <screenshot.bmp>'))
 
 config = {}
 
 with open(sys.argv[1]) as json_file:
     config = json.load(json_file)
 
-symbols = load_nogmb_map(sys.argv[2])
+symbols = load_noi(sys.argv[2])
 symbols = {value:key for key, value in symbols.items()}
 
 snapshot = read_bgb_snspshot(sys.argv[3])
