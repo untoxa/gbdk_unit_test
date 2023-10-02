@@ -1,5 +1,5 @@
 #include "framework/main.h"
 
-void test() {
+void test(void) {
 
 }

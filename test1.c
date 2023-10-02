@@ -4,7 +4,7 @@
 
 #include "framework/main.h"
 
-void test() {
+void test(void) {
     printf("hello, world!");
     strcpy(result, "PASSED"); 
     delay(100);

@@ -1,8 +1,7 @@
 #include <gb/gb.h>
 #include <gb/drawing.h>
 
-void test(void)
-{
+void test(void) {
     UBYTE  a,b,c,d,e;
     c=0;
     /* Draw many characters on the screen with different fg and bg colours */
