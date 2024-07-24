@@ -1,0 +1,4 @@
+{
+  "description": "Test the state of an IO register",
+  "rules": ["DATA('IO_REG', ADDR('_NR33_REG', 'IO_REG')) == 0x36"]
+}
