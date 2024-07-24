@@ -145,11 +145,53 @@ def read_bgb_snspshot(filename):
             data.fromfile(f, len)
             return data
 
+    def readascii_len(f, len):
+        res = f.read(len)
+        return res.decode('u8')
+
+    # see: https://github.com/LIJI32/SameBoy/blob/master/BESS.md
+    def read_bess(f):
+        bess_data = {}
+
+        # offset of BESS from start of file, not useful
+        f.read(4)
+
+        name = readascii_len(f, 4)
+        while (name):
+            len = unpack('<L', f.read(4))[0]
+
+            if name == 'NAME':
+                data = readascii_len(f, len)
+            elif name == 'INFO':
+                data = readascii_len(f, len - 2)
+                f.read(2)  # checksum
+            elif name == 'CORE':
+                data = array('B')
+                data.fromfile(f, len)
+
+            bess_data[name] = data
+
+            if name == 'CORE':
+                break  # TODO: read the last block(s)
+
+            name = readascii_len(f, 4)
+
+        return bess_data
+
     snapshot = {}
     with open(filename, 'rb') as f:
         name = readasciiz(f)
         while (name):
-            data = readblock(f)
+            if name == 'BESS':
+                data = read_bess(f)
+            else:
+                data = readblock(f)
             snapshot[name] = data
             name = readasciiz(f)
+
+    # memory mapped IO registers
+    # https://github.com/LIJI32/SameBoy/blob/master/BESS.md#core-block
+    if snapshot['BESS'] and snapshot['BESS']['CORE']:
+        snapshot['IO_REG'] = snapshot['BESS']['CORE'][0x18:0x97]
+
     return snapshot

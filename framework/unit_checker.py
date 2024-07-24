@@ -33,7 +33,16 @@ def exec_rule(rule):
     exec('global rule_result; rule_result = {:s}'.format(rule))
     return rule_result
 
-mem_map = { 'WRAM': 0xC000, 'VRAM': 0x8000, 'OAM': 0xFE00, 'HRAM': 0xFF80 }
+
+mem_map = {
+    'VRAM': 0x8000,
+    'WRAM': 0xC000,
+    'OAM': 0xFE00,
+    'IO_REG': 0xFF00,
+    'HRAM': 0xFF80,
+}
+
+
 def ADDR(symbol, base):
     if type(base) is str:
         base = mem_map[base.upper()]
